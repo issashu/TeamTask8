@@ -17,6 +17,6 @@ printf("%d\n", res);
     res = a ^ b;
 printf("%d\n", res);
 
-return 0;
+printf("lalalalalalala");
 
 }
