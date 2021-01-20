@@ -3,6 +3,9 @@
 
 #include <stdio.h>
 
+int main()
+{
+    printf("Hello world");
 int main(void){
     int a,b;
     a = 3;
