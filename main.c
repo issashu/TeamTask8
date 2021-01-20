@@ -20,6 +20,6 @@ printf("%d\n", res);
     res = a ^ b;
 printf("%d\n", res);
 
-printf("lalalalalalala");
+return 0;
 
 }
