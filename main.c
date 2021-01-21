@@ -11,7 +11,7 @@ int main(void){
   unsigned int Number2;
   unsigned int count;
 
-  printf("Please input two number.\n");
+  printf("Please input two numbers.\n");
   printf("Your first number(up to 9 symbols): \n");
   scanf("%ud", &Number1);
   printf("Your second number: \n");
@@ -19,15 +19,15 @@ int main(void){
   printf("Your encoded number is: \n");
   printf("Your number is decoding..************.\n");
 
-  for(int i = 1; i <= CountBits(Number1)/4 ; i++){
-    printf("%c ", FindLetter(CodeNumber(Number1, count)));
-    count++;
+  for(int i =  CountBits(Number1); i >= 0; i--){
+    printf("%c ", FindLetter(CodeNumber(Number1, i)));
+   // count++;
   }
   printf("\n");
 
-  for(int i = 1; i <= CountBits(Number2)/4 ; i++){
-    printf("%c ", FindLetter(CodeNumber(Number2, count)));
-    count++;
+  for(int i = CountBits(Number2) ; i >= 0; i--){
+    printf("%c ", FindLetter(CodeNumber(Number2, i)));
+    //count++;
   }
 
   return 0;
@@ -35,30 +35,35 @@ int main(void){
 
 unsigned int CountBits(unsigned int number){
   int count = 0;
+  int bit = 0;
   while (number){
     count++;
     number >>= 1;
   }
-  return count; 
+  bit = count / 4;
+  if (count % 4 != 0){
+    bit++;
+  }
+  return bit; 
 }
 
 unsigned int CodeNumber (unsigned int Number1, unsigned int count) { //взима зададеното число и буквата (бита), който търсим
     unsigned int ConvertedNumber = Number1; //запазване на числото, за да може да шифтва
-    ConvertedNumber <<= count * 4; //шифтване наляво, за да се изчистят предишните използвани битове
-    ConvertedNumber >>= 28; //шифтване надясно, за да вземем най-старшите 4 бита на числото
-    return ConvertedNumber; //даване на новото число, за да се принтира като буква по-нататък
+    ConvertedNumber >>= (count-1) * 4; //шифтване наляво, за да се изчистят предишните използвани битове
+   // ConvertedNumber >>= 28; //шифтване надясно, за да вземем най-старшите 4 бита на числото
+    return ConvertedNumber % 16; //даване на новото число, за да се принтира като буква по-нататък
     //извън фубнкцията трябва един loop, в който да се дават параметрите
 }
 
 
 char FindLetter(unsigned int ConvertedNumber){
   
-  if(ConvertedNumber < 0 || ConvertedNumber > 15){
-    printf("The current element of the code has no viable information to be deschiferred!\n");
-    return 'X';
+   if(ConvertedNumber < 0 || ConvertedNumber > 15){
+   printf("The current element of the code has no viable information to be deschiferred!\n");
+   return 'X';
   }
   char Letters[] = {' ', 'G', 'H', 'I', 'L', 'M', 'N', 'O', 'P', 'R', 'A', 'B', 'C', 'D', 'E', 'F'};
-  return Letters[ConvertedNumber + 1];
+  return Letters[ConvertedNumber];
   }
 
   /*int Itterator = 0;
