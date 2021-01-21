@@ -1,113 +1,61 @@
-//Дани, Дени, Дони <3
+//Дани, Дени, Дони 
 #include <stdio.h>
 
-unsigned int CountBits(unsigned int number);
-unsigned int CodeNumber (unsigned int Number1, unsigned int count);
-char FindLetter(unsigned int ConvertedNumber);
+unsigned int countBits(unsigned int number); //намира най-старшият бит и изкарва брой групи по 4 бита
+unsigned int codeNumber (unsigned int number1, unsigned int count); //генерираме декодираното число
+char findLetter(unsigned int convertedNumber); //връща декодираната буква
 
 int main(void){
 
-  unsigned int Number1;
-  unsigned int Number2;
+  unsigned int number1;
+  unsigned int number2;
   unsigned int count;
 
   printf("Please input two numbers.\n");
   printf("Your first number(up to 9 symbols): \n");
-  scanf("%ud", &Number1);
+  scanf("%ud", &number1);
   printf("Your second number: \n");
-  scanf("%ud\n", &Number2);
+  scanf("%ud\n", &number2);
   printf("Your encoded number is: \n");
   printf("Your number is decoding..************.\n");
 
-  for(int i =  CountBits(Number1); i >= 0; i--){
-    printf("%c ", FindLetter(CodeNumber(Number1, i)));
-   // count++;
+  for(int i =  countBits(number1); i >= 0; i--){  //извиква необходимите функции с броя на групите от 4 бита
+    printf("%c ", findLetter(codeNumber(number1, i)));
   }
   printf("\n");
 
-  for(int i = CountBits(Number2) ; i >= 0; i--){
-    printf("%c ", FindLetter(CodeNumber(Number2, i)));
-    //count++;
+  for(int i = countBits(number2) ; i >= 0; i--){
+    printf("%c ", findLetter(codeNumber(number2, i)));
   }
 
   return 0;
 }
 
-unsigned int CountBits(unsigned int number){
-  int count = 0;
+unsigned int countBits(unsigned int number){
+  int counter = 0;
   int bit = 0;
-  while (number){
-    count++;
+  while (number){ //брои битовете в числото
+    counter++;
     number >>= 1;
   }
-  bit = count / 4;
-  if (count % 4 != 0){
+  bit = counter / 4; //изкарваме колко групи има
+  if (counter % 4 != 0){ //ако има изключение 
     bit++;
   }
   return bit; 
 }
 
-unsigned int CodeNumber (unsigned int Number1, unsigned int count) { //взима зададеното число и буквата (бита), който търсим
-    unsigned int ConvertedNumber = Number1; //запазване на числото, за да може да шифтва
-    ConvertedNumber >>= (count-1) * 4; //шифтване наляво, за да се изчистят предишните използвани битове
-   // ConvertedNumber >>= 28; //шифтване надясно, за да вземем най-старшите 4 бита на числото
-    return ConvertedNumber % 16; //даване на новото число, за да се принтира като буква по-нататък
-    //извън фубнкцията трябва един loop, в който да се дават параметрите
+unsigned int codeNumber (unsigned int number1, unsigned int count) { //взима зададеното число и броя на групите от 4 бита, които търсим
+  unsigned int convertedNumber = number1; //запазване на числото, за да може да се шифтва
+  convertedNumber >>= (count-1) * 4; //шифтване надясно, за да изведем групата от 4 бита, които ще декодираме
+  return convertedNumber % 16; //връщаме декодираното число в шестнайсетичен вид
 }
 
-
-char FindLetter(unsigned int ConvertedNumber){
-  
-   if(ConvertedNumber < 0 || ConvertedNumber > 15){
-   printf("The current element of the code has no viable information to be deschiferred!\n");
-   return 'X';
+char findLetter(unsigned int convertedNumber) { //подаваме декодираното число в шестнайсетичен вид
+  if(convertedNumber < 0 || convertedNumber > 15){  //правим проверка
+    printf("The current element of the code has no viable information to be deschiferred!\n");
+    return 'X';
   }
-  char Letters[] = {' ', 'G', 'H', 'I', 'L', 'M', 'N', 'O', 'P', 'R', 'A', 'B', 'C', 'D', 'E', 'F'};
-  return Letters[ConvertedNumber];
-  }
-
-  /*int Itterator = 0;
-  Itterator = ConvertedNumber%15;
-  if (Itterator == 0)
-  {
-    /*DEBUG:
-    printf("%d\n", Itterator);
-    return 'F';
-  }else
-    {
-       /*DEBUG:
-       printf("%d\n", Itterator);
-       return Letters[Itterator];
-    }*/
-
-/* int FindMSB (unsigned int Number){
-  //DEBUG: unsigned int Number = 10000;
-  unsigned int MSBCount=0;
-  unsigned int ShiftIteerations=0;
-
-  //Намира на коя позиция е най-старшия бит.
-  while(Number!=0){
-    Number>>=1;
-    MSBCount++;
-    printf("%d\n", MSBCount);
-  }
-  
-  //Показва колко пъти по 4 имаме да шифтваме
-  ShiftIteerations = MSBCount/4;
-  
-  //DEBUG: printf("%d", ShiftIteerations);
-  return ShiftIteerations;
-}*/
-
-/*
-
-void Convert(int number){
-  int i;
-  for(i = 1 << 7; i > 0; i >>= 1){
-    if(number & i){
-      printf("1");
-    }else{
-    printf("0");
-    }
-  }
-}*/
+  char letters[] = {' ', 'G', 'H', 'I', 'L', 'M', 'N', 'O', 'P', 'R', 'A', 'B', 'C', 'D', 'E', 'F'}; //генерираме масив от символи /0-15/
+  return letters[convertedNumber]; //функцията връща буква
+}
