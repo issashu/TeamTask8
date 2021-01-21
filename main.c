@@ -3,10 +3,12 @@
 
 unsigned int CodeNumber (unsigned int Number1, int letterTaken);
 char FindLetter(int ConvertedNumber);
+int FindMSB (unsigned int Number);
 
-int main()
-{
+int main(){
     
+
+
 }
 
 unsigned int CodeNumber (unsigned int Number1, int letterTaken) { //взима зададеното число и буквата (бита), който търсим
@@ -18,11 +20,12 @@ unsigned int CodeNumber (unsigned int Number1, int letterTaken) { //взима �
 }
 
 
-char FindLetter(int ConvertedNumber)
-{
+char FindLetter(int ConvertedNumber){
   char Letters[] = {' ', 'G', 'H', 'I', 'L', 'M', 'N', 'O', 'P', 'R', 'A', 'B', 'C', 'D', 'E', 'F'};
-  int Itterator = 0;
-  /*Itterator = ConvertedNumber%15;
+  return Letters[ConvertedNumber];
+
+  /*int Itterator = 0;
+  Itterator = ConvertedNumber%15;
   if (Itterator == 0)
   {
     /*DEBUG:
@@ -35,4 +38,23 @@ char FindLetter(int ConvertedNumber)
        return Letters[Itterator];
     }*/
   
+}
+
+int FindMSB (unsigned int Number){
+  //DEBUG: unsigned int Number = 10000;
+  unsigned int MSBCount=0;
+  unsigned int ShiftIteerations=0;
+
+  //Намира на коя позиция е най-старшия бит.
+  while(Number!=0){
+    Number>>=1;
+    MSBCount++;
+    printf("%d\n", MSBCount);
+  }
+  
+  //Показва колко пъти по 4 имаме да шифтваме
+  ShiftIteerations = MSBCount/4;
+  
+  //DEBUG: printf("%d", ShiftIteerations);
+  return ShiftIteerations;
 }
