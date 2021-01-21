@@ -53,8 +53,8 @@ IV.Разпределение екипни задачи:
 
 
 V. Функции и параметри:
-    unsigned int CountBits(unsigned int number) -
-    unsigned int CodeNumber (unsigned int Number1, unsigned int count) -
-    char FindLetter(unsigned int ConvertedNumber) -
+    unsigned int countBits(unsigned int number) - намира най-старшият бит и изкарва брой групи по 4 бита
+    unsigned int codeNumber (unsigned int number1, unsigned int count); - генерираме декодираното число
+    char findLetter(unsigned int convertedNumber) - връща декодираната буква
 
 
