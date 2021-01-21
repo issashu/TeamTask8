@@ -49,8 +49,9 @@ unsigned int CodeNumber (unsigned int Number1, int letterTaken) { //взима �
 
 
 char FindLetter(int ConvertedNumber){
+  
   char Letters[] = {' ', 'G', 'H', 'I', 'L', 'M', 'N', 'O', 'P', 'R', 'A', 'B', 'C', 'D', 'E', 'F'};
-  return Letters[ConvertedNumber];
+  return Letters[ConvertedNumber+1];
 
   /*int Itterator = 0;
   Itterator = ConvertedNumber%15;
