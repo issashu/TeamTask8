@@ -68,7 +68,7 @@ char FindLetter(int ConvertedNumber){
   
 }
 
-int FindMSB (unsigned int Number){
+/* int FindMSB (unsigned int Number){
   //DEBUG: unsigned int Number = 10000;
   unsigned int MSBCount=0;
   unsigned int ShiftIteerations=0;
@@ -85,4 +85,4 @@ int FindMSB (unsigned int Number){
   
   //DEBUG: printf("%d", ShiftIteerations);
   return ShiftIteerations;
-}
+}*/
