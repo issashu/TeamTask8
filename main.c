@@ -1,14 +1,43 @@
-
+//дони
 #include <stdio.h>
+
+void Convert(int number);
+
+unsigned int CountBits(unsigned int number);
 
 unsigned int CodeNumber (unsigned int Number1, int letterTaken);
 char FindLetter(int ConvertedNumber);
 int FindMSB (unsigned int Number);
 
-int main(){
+int main()
+{
+    unsigned int Number1;
+    unsigned int Number2;
+
+    scanf("%ud", Number1);
     
+  return 0;
+}
 
+unsigned int CountBits(unsigned int number){
+  int count = 0;
+  while (number){
+    count++;
+    number >>= 1;
+  }
+  return count; 
+}
 
+void Convert(int number){
+  int i;
+  for(i = 1 << 7; i > 0; i >>= 1){
+    if(number & i){
+      printf("1");
+    }else{
+    printf("0");
+    }
+  }
+}
 }
 
 unsigned int CodeNumber (unsigned int Number1, int letterTaken) { //взима зададеното число и буквата (бита), който търсим
