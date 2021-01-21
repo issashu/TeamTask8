@@ -13,8 +13,20 @@ int main()
 {
     unsigned int Number1;
     unsigned int Number2;
-
+  // принтф меню
+  //сканф потребителя да въведе две числа
     scanf("%ud", Number1);
+    //Vashiqt kod e, w momenta se prevejda:
+    //подаваме на функцията CodeNumber(едно число);
+    //подаваме ConvertedNumber на функцията FindLetter
+    //for(int i = 1; i <= CountBits()/4 ; i++){
+    /*  CodeNumber();
+        FindLetter();
+        printf(FindLetter)
+    *
+   /*syshtoto za 2-roto chislo */
+
+
     
   return 0;
 }
