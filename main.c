@@ -1,6 +1,7 @@
 
 #include <stdio.h>
 
+unsigned int CodeNumber (unsigned int Number1, int letterTaken);
 char FindLetter(int ConvertedNumber);
 
 int main()
