@@ -50,6 +50,10 @@ unsigned int CodeNumber (unsigned int Number1, int letterTaken) { //взима �
 
 char FindLetter(int ConvertedNumber){
   
+  if(ConvertedNumber<0 || ConvertedNumber>15){
+    printf("The current element of the code has no viable information to be deschiferred!\n");
+    return 'X';
+  }
   char Letters[] = {' ', 'G', 'H', 'I', 'L', 'M', 'N', 'O', 'P', 'R', 'A', 'B', 'C', 'D', 'E', 'F'};
   return Letters[ConvertedNumber+1];
 
