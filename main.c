@@ -37,7 +37,6 @@ void Convert(int number){
     }
   }
 }
-}
 
 unsigned int CodeNumber (unsigned int Number1, int letterTaken) { //взима зададеното число и буквата (бита), който търсим
     unsigned int ConvertedNumber = Number1; //запазване на числото, за да може да шифтва
