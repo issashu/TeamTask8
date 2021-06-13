@@ -1,32 +1,27 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdbool.h>
-#include <errno.h>
-#include <ctype.h>
+#include "Bitwise_Ops.h"
 
-int validateNumber (int number) {
-    if(number<0 || !isdigit(number)){
-        printf("Supplied arguments must have a positive attitude AND must still be a number ^^\n");
-        exit(EINVAL);
+
+int main(int argc, char **argv) {
+    int number = atoi(argv[1]);
+    int position = atoi(argv[2]);
+    int swapMask = 1;
+
+    while (position > 8) {
+        printf("Please enter an index for bit operations for 8bit number (1-8) or ctrl+C to quit:\n");
+        scanf("%d", &position);
     }
-
+    
+    validateNumber(number);
+    validateNumber(position);
+    swapMask = (1 << position) - 1;
+    printf("All bits after position %d were removed and result is: %d\n", position, (number &= swapMask));
+    
     return 0;
 }
 
-int main(int argc, char **argv) {
-    printf("%s %s %s\n", argv[0], argv[1], argv[2]);
-    int Number = *argv[1];
-    int Position = *argv[2];
-    int SwapMask = 1;
-
-    while (Position > 8) {
-        printf("Please enter an index for bit operations for 8bit number (1-8) or ctrl+C to quit:\n");
-        scanf("%d", &Position);
+void validateNumber (int number) {
+    if(number < 0 || (isdigit(number) != 0)){
+        printf("Supplied arguments must have a positive attitude AND must still be a number ^^\n");
+        exit(EINVAL);
     }
-        validateNumber(Number);
-        validateNumber(Position);
-        SwapMask = (1<<Position)-1;
-        printf("All bits after position %d were removed: %d", Position, (Number &= SwapMask));
-    
-    return 0;
 }

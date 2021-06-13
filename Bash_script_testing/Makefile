@@ -4,7 +4,7 @@
 #
 
 # define the C compiler to use
-CC = clang
+CC = gcc
 
 # define any compile-time flags
 CFLAGS	:= -Wall -Wextra -g
@@ -87,5 +87,5 @@ clean:
 	@echo Cleanup complete!
 
 run: all
-	./$(OUTPUTMAIN) 255 5
+	./$(OUTPUTMAIN)
 	@echo Executing 'run: all' complete!
