@@ -1,5 +1,10 @@
 #!/bin/bash
 
+#compile the C app
+#../"make clean"
+#../"make"
+
+#Supply arguments and test output
 number=$1
 position=$2
 expected=$3

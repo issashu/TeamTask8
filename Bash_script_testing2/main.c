@@ -28,6 +28,11 @@ void printFinalResult(int a, int b, int result, int input) {
 int manipulateNumbers(int a, int b, int result, int input) {
     a = addNumbers(a);
     b = addNumbers(b);
+
+    if (b < 0 && input==4){
+        printf("Division by zero not allowed!");
+        exit(1);
+    }
     
     /* printf("\nYour numbers are a = %d, b = %d\n\n", a, b);
     printf("1. For operation 'ADD' press 1.\n");
