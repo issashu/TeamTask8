@@ -9,16 +9,14 @@
 #include <stdlib.h>
 
 int AllocateMemory (int *P, int uSize);
-void FreeMemory(int *p);
-int ReallocateMemory(int *p);
+int ReallocateMemory(int *p, int NrRealloc);
 
-int main(){
+int main(int argc, char **argv){
     //Variables go here:
-    int NrElements = 0;
+    int NrElements = atoi(argv[1]);
+    int NrRealloc = atoi(argv[2]);
 
     //Methods go here:
-    printf("Please enter how many elements you need memory allocated for: \n");
-    scanf("%d", &NrElements);
     int *Pointy = (int*) calloc(NrElements, sizeof(int));
     if (Pointy == NULL){
         printf("I am terribly sorry, Sir! Something went wrong. Have a jolly afternoon.\n");
@@ -27,24 +25,16 @@ int main(){
     else{
         printf("Array allocated at %p up to %p\n", Pointy, (Pointy+NrElements));
     }
-    if (ReallocateMemory(Pointy)) {
+    if (ReallocateMemory(Pointy, NrRealloc)) {
         
         return 1;
     }
 
-    FreeMemory(Pointy);
-
     return 0;
 }
 
-void FreeMemory(int *p){
-    free(p);  
-}
-
-int ReallocateMemory(int *p){
-    int NewMax = 0;
-    printf ("Please enter a new size for the array: \n");
-    scanf ("%d", &NewMax);
+int ReallocateMemory(int *p, int NrRealloc){
+    int NewMax = NrRealloc;
     p = realloc(p, NewMax * sizeof(int));
     if (p == NULL){
         printf("I am terribly sorry, Sir! Something went wrong. Have a jolly afternoon.\n");
