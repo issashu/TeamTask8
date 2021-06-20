@@ -2,6 +2,10 @@
 #include <string.h>
 
 int main(int argc, char **argv) {
+    if (argc < 4) {
+        printf("Not enough arguments");
+        return 1;
+    }
     char *argv1 = argv[1];
     char argv2 = *argv[2];
     char argv3 = *argv[3];
@@ -18,7 +22,7 @@ int main(int argc, char **argv) {
         p++;
     }
 
-    fprintf(stdout,"%s", argv1);
+    printf("%s", argv1);
 
     return 0;
 }

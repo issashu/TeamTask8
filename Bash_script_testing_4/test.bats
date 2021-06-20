@@ -4,12 +4,22 @@ string=$1
 symbol1=$2
 symbol2=$3
 
-result=$(./strrefactory "Mama kaka lala nana" a e)
-expected="Meme keke lele nen"
+expected="Meme keke lele nene"
+fail="Mama kaka lala nana"
 
-@test "test refactory string" {
-    if [[ $result != "$expected" ]]
-    then 
-        echo "Fail!"
-    fi
+@test "test refactory success" {
+    run ./strrefactory "Mama kaka lala nana" a e
+    [ $status -eq 0 ]
+    [ "${lines[0]}" = "${expected}" ]
+}
+
+@test "test refactory fail" {
+    run ./strrefactory "Mama kaka lala nana" a e
+    [ $status -eq 0 ]
+    [ "${lines[0]}" != "${fail}" ]
+}
+
+@test "not enough arguments" {
+    run ./strrefactory
+    [ $status -eq 1 ]
 }
