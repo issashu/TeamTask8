@@ -1,14 +1,7 @@
 #!/usr/bin/env bats
 
-string=$1
-symbol1=$2
-symbol2=$3
-
-expected="Meme keke lele nene"
-fail="Mama kaka lala nana"
-
 @test "test refactory success" {
-    run ./strrefactory "Mama kaka lala nana" a e
+    run ./strrefactory "$supplied" "$symbol1" "$symbol2"
     [ $status -eq 0 ]
     [ "${lines[0]}" = "${expected}" ]
 }
