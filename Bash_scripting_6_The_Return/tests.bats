@@ -26,7 +26,7 @@
     expected_result=21
 
     run ./macros "$NUM1" "$NUM2"
-    [ $status -eq 0 
+    [ $status -eq 0 ]
     [ "${lines[0]}" == "${expected_result}" ]
 }
 
