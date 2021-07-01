@@ -24,6 +24,8 @@ int main(int argc, char **argv) {
         return 1;
     }
 
+
+
     int x = atoi(argv[1]);
     int y = atoi(argv[2]);
    
